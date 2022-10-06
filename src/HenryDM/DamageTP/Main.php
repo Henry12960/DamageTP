@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_PROJECTILE) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();	
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-suffocation") === true) {
@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_SUFFOCATION) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();	
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-fall") === true) {
@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_FALL) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();	
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-lava") === true) {
@@ -54,7 +54,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_LAVA) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();	
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-drowning") === true) {
@@ -62,7 +62,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_DROWNING) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();	
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-explosion") === true) {
@@ -70,7 +70,7 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_BLOCK_EXPLOSION) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();
-				}
+		}
             }
 
             if($this->getConfig()->get("tp-spawn-void") === true) {
@@ -78,8 +78,8 @@ class Main extends PluginBase implements Listener {
                 if($cause === EntityDamageEvent::CAUSE_VOID) {
                     $entity->teleport($entity->getWorld()->getSpawnLocation());
                     $event->cancel();
-				}
-            }
 		}
+            }
+	}
     }
 }
