@@ -1,9 +1,8 @@
 ---
-
 # ===================
 #      DAMAGE TP 
 # ===================
-# 1. A simple plugin to teleport the player to spawn when taking damage!
+# 1. A simple plugin to teleport the player to world spawn when taking damage!
 # 2. If you see errors, report here: https://github.com/Henry12960/DamageTP/issues/new
 # 3. Plugin made by Henry Thierry [HenryDM] 
 # 4. Henry's Website: https://github.com/Henry12960
@@ -11,29 +10,20 @@
 # ===================
 #       GENERAL 
 # ===================
-# NOTE: 'damage-to-world's' are the world's where this plugin works
+# NOTE: 'damage-to-world's' are the world's where this plugin works!
 
 damage-tp-worlds: ["lobby", "world"]
 
 # ===================
 #      DAMAGES 
 # ===================
-# 1. Set to true to activate!
+# 1. Set to true to enable the ones you prefer!
 
-tp-suffocation-damage: false
-tp-void-damage: false
-tp-projectile-damage: false
-tp-fall-damage: false
-tp-drowning-damage: false
-
-# ===================
-#      TP MODE 
-# ===================
-# 1. You can use 'worldspawn' to teleport player to world spawn and 'defworld' to teleport player to default world!
-
-suffocation-tp-mode: "worldspawn"
-void-damage-tp-mode: "worldspawn"
-projectile-damage-tp-mode: "worldspawn"
-fall-damage-tp-mode: "defwold" 
-drowning-damage-tp-mode: "defworld"
+tp-spawn-projectile: false
+tp-spawn-suffocation: false
+tp-spawn-fall: false
+tp-spawn-lava: false
+tp-spawn-drowning: false
+tp-spawn-explosion: false
+tp-spawn-void: false
 ...

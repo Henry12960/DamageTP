@@ -22,106 +22,64 @@ class Main extends PluginBase implements Listener {
         $cause = $event->getCause();
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
-# ================================================          
-        $suffocationTP = $this->getConfig()->get("suffocation-tp-mode");
-        $voidTP = $this->getConfig()->get("void-tp-mode");
-        $projectileTP = $this->getConfig()->get("projectile-tp-mode");
-        $lavaTP = $this->getConfig()->get("lava-tp-mode");
-        $fallTP = $this->getConfig()->get("fall-tp-mode");
-        $drowningTP = $this->getConfig()->get("drowning-tp-mode");
 # ================================================
-        if(in_array($worldName, $this->getConfig()->get("damage-tp-worlds", []))) {
-            if (!$entity instanceof Player) {
 
-# ====================
-#  CAUSE SUFFOCATION
-# ====================  
+        if(in_array($worldName, $this->getConfig()->get("damage-tp-worlds", []))) {  
+            if($this->getConfig()->get("tp-spawn-projectile") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_PROJECTILE) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();	
+				}
+            }
 
-                if($this->getConfig()->get("tp-suffocation-damage") === true) {
-                    if($cause === EntityDamageEvent::CAUSE_SUFFOCATION) {
-                        if($suffocationTP === "worldspawn") {
-                            $entity->teleport($entity->getWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
+            if($this->getConfig()->get("tp-spawn-suffocation") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_SUFFOCATION) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();	
+				}
+            }
 
-                        if($suffocationTP === "defspawn") {
-                            $entity->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-                    }
-                }
-# ====================
-#     CAUSE VOID
-# ==================== 
+            if($this->getConfig()->get("tp-spawn-fall") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_FALL) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();	
+				}
+            }
 
-                if($this->getConfig()->get("tp-void-damage") === true) {
-                    if($cause === EntityDamageEvent::CAUSE_VOID) {
-                        if($voidTP === "worldspawn") {
-                            $entity->teleport($entity->getWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
+            if($this->getConfig()->get("tp-spawn-lava") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_LAVA) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();	
+				}
+            }
 
-                        if($voidTP === "defspawn") {
-                            $entity->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-                    }
-                } 
-                
-# ====================
-#   CAUSE PROJECTILE
-# ==================== 
+            if($this->getConfig()->get("tp-spawn-drowning") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_DROWNING) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();	
+				}
+            }
 
-                if($this->getConfig()->get("tp-projectile-damage") === true) {
-                    if($cause === EntityDamageEvent::CAUSE_PROJECTILE) {
-                        if($projectileTP === "worldspawn") {
-                            $entity->teleport($entity->getWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
+            if($this->getConfig()->get("tp-spawn-explosion") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_BLOCK_EXPLOSION) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();
+				}
+            }
 
-                        if($projectileTP === "defspawn") {
-                            $entity->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-                    }
-                }
-                
-# ====================
-#     CAUSE FALL
-# ==================== 
-
-                if($this->getConfig()->get("tp-fall-damage") === true) {
-                    if($cause === EntityDamageEvent::CAUSE_FALL) {
-                        if($fallTP === "worldspawn") {
-                            $entity->teleport($entity->getWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-
-                        if($fallTP === "defspawn") {
-                            $entity->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-                    }
-                }
-                
-# ====================
-#    CAUSE DROWNING
-# ==================== 
-
-                if($this->getConfig()->get("tp-drowning-damage") === true) {
-                    if($cause === EntityDamageEvent::CAUSE_DROWNING) {
-                        if($drowningTP === "worldspawn") {
-                            $entity->teleport($entity->getWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-
-                        if($drowningTP === "defspawn") {
-                            $entity->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSpawnLocation());
-                            $event->cancel();
-                        }
-                    }
-                }                 
-            }     
-        }
+            if($this->getConfig()->get("tp-spawn-void") === true) {
+                if(!$entity instanceof Player) return;
+                if($cause === EntityDamageEvent::CAUSE_VOID) {
+                    $entity->teleport($entity->getWorld()->getSpawnLocation());
+                    $event->cancel();
+				}
+            }
+		}
     }
 }
