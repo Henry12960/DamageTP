@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Henry12960/DamageTP
+build-by-default: true
+branches:
+- main
+projects:
+  DamageTP:
+    path: ""
+    icon: "DamageTP.png"
+...
