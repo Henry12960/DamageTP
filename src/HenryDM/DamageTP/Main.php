@@ -20,14 +20,15 @@ class Main extends PluginBase implements Listener {
 # ================================================        
         $entity-> $event->getEntity();
         $cause = $event->getCause();
-        $world = $sender->getWorld();
+        $world = $entity->getWorld();
         $worldName = $world->getFolderName();
 # ================================================          
-        $suffocationTP = $this->getConfig()-get("suffocation-tp-mode");
-        $voidTP = $this->getConfig()-get("void-tp-mode");
-        $projectileTP = $this->getConfig()-get("projectile-tp-mode");
-        $lavaTP = $this->getConfig()-get("lava-tp-mode");
-        $fallTP = $this->getConfig()-get("fall-tp-mode");
+        $suffocationTP = $this->getConfig()->get("suffocation-tp-mode");
+        $voidTP = $this->getConfig()->get("void-tp-mode");
+        $projectileTP = $this->getConfig()->get("projectile-tp-mode");
+        $lavaTP = $this->getConfig()->get("lava-tp-mode");
+        $fallTP = $this->getConfig()->get("fall-tp-mode");
+        $drowningTP = $this->getConfig()->get("drowning-tp-mode");
 # ================================================
         if(in_array($worldName, $this->getConfig()->get("damage-tp-worlds", []))) {
             if (!$entity instanceof Player) {
@@ -39,7 +40,7 @@ class Main extends PluginBase implements Listener {
                 if($this->getConfig()->get("tp-suffocation-damage") === true) {
                     if($cause === EntityDamageEvent::CAUSE_SUFFOCATION) {
                         if($suffocationTP === "worldspawn") {
-                            $entity->teleport($player->getWorld()->getSpawnLocation());
+                            $entity->teleport($entity->getWorld()->getSpawnLocation());
                             $event->cancel();
                         }
 
@@ -56,7 +57,7 @@ class Main extends PluginBase implements Listener {
                 if($this->getConfig()->get("tp-void-damage") === true) {
                     if($cause === EntityDamageEvent::CAUSE_VOID) {
                         if($voidTP === "worldspawn") {
-                            $entity->teleport($player->getWorld()->getSpawnLocation());
+                            $entity->teleport($entity->getWorld()->getSpawnLocation());
                             $event->cancel();
                         }
 
@@ -74,7 +75,7 @@ class Main extends PluginBase implements Listener {
                 if($this->getConfig()->get("tp-projectile-damage") === true) {
                     if($cause === EntityDamageEvent::CAUSE_PROJECTILE) {
                         if($projectileTP === "worldspawn") {
-                            $entity->teleport($player->getWorld()->getSpawnLocation());
+                            $entity->teleport($entity->getWorld()->getSpawnLocation());
                             $event->cancel();
                         }
 
@@ -92,7 +93,7 @@ class Main extends PluginBase implements Listener {
                 if($this->getConfig()->get("tp-fall-damage") === true) {
                     if($cause === EntityDamageEvent::CAUSE_FALL) {
                         if($fallTP === "worldspawn") {
-                            $entity->teleport($player->getWorld()->getSpawnLocation());
+                            $entity->teleport($entity->getWorld()->getSpawnLocation());
                             $event->cancel();
                         }
 
@@ -110,7 +111,7 @@ class Main extends PluginBase implements Listener {
                 if($this->getConfig()->get("tp-drowning-damage") === true) {
                     if($cause === EntityDamageEvent::CAUSE_DROWNING) {
                         if($drowningTP === "worldspawn") {
-                            $entity->teleport($player->getWorld()->getSpawnLocation());
+                            $entity->teleport($entity->getWorld()->getSpawnLocation());
                             $event->cancel();
                         }
 
