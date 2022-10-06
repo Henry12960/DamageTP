@@ -18,7 +18,7 @@ class Main extends PluginBase implements Listener {
     public function onDamage(EntityDamageEvent $event) {
 
 # ================================================        
-        $entity-> $event->getEntity();
+        $entity = $event->getEntity();
         $cause = $event->getCause();
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
